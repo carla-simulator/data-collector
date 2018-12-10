@@ -19,19 +19,19 @@ System Overview
 ![Overview](docs/img/main_diagram.jpg)
 
 The data collection is divided into a set of episodes performed
-by an [expert hardcoded driver](docs/agent_module.md) to follow.
+by an [expert agent driver](docs/agent_module.md).
 
 The user can configure a [dataset configuration file](dataset_configurations/coil_training_dataset_singlecamera.py).
 This file contains a set of start/end positions, weathers and
  number of dynamic objects to appear on every data collection episode.
 Further, the user also configure a [CARLA settings](https://carla.readthedocs.io/en/latest/cameras_and_sensors/) object containing
-all the sensors that are going to be collected on this dataset.
+all the sensors that are going to be stored as a dataset.
 
 
 This configuration file and the expert demonstrator
- are used inside a collector module that is replicated
+ are used inside a collector module that can be replicated
  on several docker instances. This instances produce a dataset
- on some [specific format](docs/dataset_format_description.md).
+ on [with several measurements and sensors stored on a specific format](docs/dataset_format_description.md).
 
 
 Getting Started

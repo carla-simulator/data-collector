@@ -20,6 +20,12 @@ class ObstacleAvoidance(object):
     def stop_for_agents(self, location, orientation, wp_angle, wp_vector, agents):
         """
         Function to determine if the ego-agent is going to be stop for dynamic obstacles.
+        A  semi-circle  is computed on the direction of the ego-car orientation.
+        The semi-circle size is proportional to the distance the ego-car
+        is set to react to. These settings are set on the self.param at the class
+        initialization. If this semi circle interesects
+        with an object, the ego-car reacts to it, by stopping or
+        reducing its speed.
         Args:
             location: The location of the ego vehicle
             orientation: orientation of the ego vehicle
@@ -34,6 +40,8 @@ class ObstacleAvoidance(object):
                    each class of agent is contributing for the speed reduction of the
                    ego-vehicle.
         """
+
+
 
         # Start the speed factor for each possible dynamic factor. Multiple agents
         # can contribute to reduce the target speed of the agent
