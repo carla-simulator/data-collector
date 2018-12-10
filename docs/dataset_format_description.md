@@ -77,11 +77,13 @@ the [configuration file](../dataset_configurations/coil_training_dataset_singlec
 
 Measurements represent all the float data collected for each simulation
 step. Each measurement is associated with the respective sensor data.
+The units of the measurements are on SI format, otherwise we specify
+the format.
 All measurements are stored in json files and contain the
 following information:
 
 * Step Number: the number of the current simulation step, starts at zero and is incremented by one for every simulation step.
-* Game Timestamp: the time that has passed since the simulation has started.
+* Game Timestamp: the time that has passed since the simulation has started. Expressed on miliseconds.
 * Position: the world position of the ego-vehicle. It is expressed as a three dimensional vector (x,y,z) in meters.
 * Orientation: the orientation of the vehicle with respect
     to the world. Expressed as Euler angles (row, pitch and yaw).
@@ -95,9 +97,11 @@ following information:
     could pick any option). These commands are encoded as an
     integer number. 2 is do not care, 3 for turn left, 4 for turn right, 5 for go straight.
 * Waypoints: a set containing the 10 future positions of the vehicle.
-* Steering Angle: the current angle of the vehicle's steering wheel.
-* Throttle: the current pressure on the throttle pedal.
-* Brake: the current pressure on the brake pedal.
+* Steering Angle: the current angle of the vehicle's steering wheel. Normalized from -1 to 1
+* Throttle: the current pressure on the throttle pedal. Normalized
+from 0 to 1.
+* Brake: the current pressure on the brake pedal.Normalized
+from 0 to 1.
 * Hand Brake: if the hand brake is activated.
 * Steer Noise: the current steering angle in the vehicle considering the noise function.
 * Throttle Noise: the current pressure on the throttle pedal considering the noise function.

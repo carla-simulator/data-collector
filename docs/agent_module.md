@@ -20,18 +20,29 @@ goal.
 * A  PID controller generates the throttle, brake, and steering based
 on the waypoints.
 * The expert drives on the center of the lane.
-* Keeps a constant speed of 35 km/h when driving straight and reduces the
+* The expert keeps a constant speed of 35 km/h when driving straight and reduces the
 speed when making turns to about 15 km/h.
+
+
 
 
 #### Obstacle Avoidance
 
 The agent has the following obstacle avoidance behaviours:
 
-* Reduce speed for pedestrians from 5 to 15 meters away
+* Reduce speed for pedestrians that are from 5 to 15 meters away
 * Completely stop for pedestrians closer than 5 meters away.
 * Follows lead vehicle, imitating the lead vehicle speed.
 * Stop for red traffic lights.
+
+To compute all the obstacle avoidance behaviors the position and
+ orientation of the ego-car on the map are used. The position
+ of all the other objects(vehicles pedestrians and traffic lights),
+  are also used. A  semi-circle
+  is computed on the direction of the ego-car orientation.
+   The semi-circle size is proportional to the distance where the
+   other dynamic objects are. If this semi circle interesects
+   with an object, the ego-car reacts to it.
 
 
 #### Noiser

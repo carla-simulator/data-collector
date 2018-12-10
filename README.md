@@ -6,13 +6,32 @@ The data collected follows [this format](docs/dataset_format_description.md).
 
 This repository contains the following features:
 
-* An expert demonstrator for data collection, [documented here](agent_module.md).
+* An expert demonstrator for data collection, [documented here](docs/agent_module.md).
 * The possibility to launch several CARLAs with docker for systems
 with many GPUs to do scale up data collection.
 * We also provide a version of CARLA's release 0.8.4 that does not switch gears. We call it CARLA Gear. This problem is discussed in [this issue](https://github.com/carla-simulator/carla/issues/269).
 
 
+
+System Overview
+---------------
+
 ![Overview](docs/img/main_diagram.jpg)
+
+The data collection is divided into a set of episodes performed
+by an [expert hardcoded driver](docs/agent_module.md) to follow.
+
+The user can configure a [dataset configuration file](dataset_configurations/coil_training_dataset_singlecamera.py).
+This file contains a set of start/end positions, weathers and
+ number of dynamic objects to appear on every data collection episode.
+Further, the user also configure a [CARLA settings](https://carla.readthedocs.io/en/latest/cameras_and_sensors/) object containing
+all the sensors that are going to be collected on this dataset.
+
+
+This configuration file and the expert demonstrator
+ are used inside a collector module that is replicated
+ on several docker instances. This instances produce a dataset
+ on some [specific format](docs/dataset_format_description.md).
 
 
 Getting Started
